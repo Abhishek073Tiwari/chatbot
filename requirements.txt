@@ -1,4 +1,5 @@
 git+https://github.com/huggingface/transformers
+accelerate
 bitsandbytes
 sentencepiece
 xformers

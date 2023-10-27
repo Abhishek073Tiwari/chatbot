@@ -1,4 +1,5 @@
 git+https://github.com/huggingface/transformers
+bitsandbytes
 sentencepiece
 xformers
 loralib

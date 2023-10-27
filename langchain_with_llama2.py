@@ -7,21 +7,21 @@ Original file is located at
     https://colab.research.google.com/drive/137eawajh2IzUOWm6S2QWO7EdDSo81ca-
 """
 
-!pip -q install git+https://github.com/huggingface/transformers # need to install from github
-!pip install -q datasets loralib sentencepiece
-!pip -q install bitsandbytes accelerate xformers
-!pip -q install langchain
-!pip -q install gradio
+# !pip -q install git+https://github.com/huggingface/transformers # need to install from github
+# !pip install -q datasets loralib sentencepiece
+# !pip -q install bitsandbytes accelerate xformers
+# !pip -q install langchain
+# !pip -q install gradio
 
-!pip -q install peft chromadb
-!pip -q install unstructured
-!pip install -q sentence_transformers
-!pip -q install pypdf
+# !pip -q install peft chromadb
+# !pip -q install unstructured
+# !pip install -q sentence_transformers
+# !pip -q install pypdf
 
-!nvidia-smi
+# !nvidia-smi
 
 from huggingface_hub import login
-login()
+login(token="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")
 
 import nltk
 nltk.download()
@@ -44,7 +44,7 @@ model_id = "meta-llama/Llama-2-7b-chat-hf"
 tokenizer = AutoTokenizer.from_pretrained(model_id)
 model = AutoModelForCausalLM.from_pretrained(model_id, quantization_config = bnb_config,device_map={"":0})
 
-!nvidia-smi
+# !nvidia-smi
 
 import json
 import textwrap

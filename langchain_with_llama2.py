@@ -24,7 +24,7 @@ from huggingface_hub import login
 login(token="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")
 
 import nltk
-nltk.download()
+# nltk.download()
 
 """## LLaMA2 7B Chat
 
@@ -180,5 +180,25 @@ with gr.Blocks() as demo:
     clear_memory.click(clear_llm_memory)
     update_sys_prompt.submit(update_prompt, inputs=update_sys_prompt)
 
-demo.launch(share=False, debug=True)
+# demo.launch(share=False, debug=True)
+import streamlit as st
+from langchain.llms import OpenAI
+
+st.title("🔗 Chatbot")
+
+with st.sidebar:
+
+def generate_response(input_text):
+    llm = OpenAI(temperature=0.7, openai_api_key=openai_api_key)
+    st.info(llm(input_text))
+def respond(input_text, chat_history):
+    bot_message = st.inf(bot({"question": input_text})['answer'])
+    chat_history.append((input_text, bot_message))
+    return "", chat_history
+clear_memory.click(clear_llm_memory)
+update_sys_prompt.submit(update_prompt, inputs=update_sys_prompt)
+
+with st.form("my_form"):
+    text = st.text_area("Enter text:", "Hello,\nHow may I help you?")
+    submitted = st.form_submit_button("Submit")
 
